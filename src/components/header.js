@@ -1,32 +1,21 @@
-import PropTypes from 'prop-types'
-import React from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import AlarmIcon from '@material-ui/icons/Alarm';
 
-import { Link } from 'gatsby'
-
-import clsx from 'clsx'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import Drawer from '@material-ui/core/Drawer'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import List from '@material-ui/core/List'
-import Typography from '@material-ui/core/Typography'
-import Divider from '@material-ui/core/Divider'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import HomeIcon from '@material-ui/icons/Home'
-import ListIcon from '@material-ui/icons/ViewList'
-
-const drawerWidth = 240
+const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
+  },
+  siteTitle: {
+    flexGrow: 1,
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -79,95 +68,40 @@ const useStyles = makeStyles(theme => ({
     }),
     marginLeft: 0,
   },
-}))
+}));
 
 const Header = ({ siteTitle }) => {
-  const classes = useStyles()
-
-  const theme = useTheme()
-  const [open, setOpen] = React.useState(false)
-
-  function handleDrawerOpen() {
-    setOpen(true)
-  }
-
-  function handleDrawerClose() {
-    setOpen(false)
-  }
-
+  const classes = useStyles();
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        elevation={0}
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
+      <AppBar position="fixed" elevation={0} color="primary">
         <Toolbar>
-          <IconButton
+          <Typography
+            variant="h6"
             color="inherit"
-            aria-label="Open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
+            className={classes.siteTitle}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" color="inherit">
             {siteTitle}
           </Typography>
+          <Typography variant="caption" className="dateTime">
+            12:06PM Wed
+          </Typography>
+          <IconButton color="inherit" aria-label="add an alarm" disableRipple>
+            <AlarmIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
-      <Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="left"
-        open={open}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          <Link to="/">
-            <ListItem button>
-              <ListItemIcon>
-                <HomeIcon />
-              </ListItemIcon>
-              <ListItemText>Home</ListItemText>
-            </ListItem>
-          </Link>
-          <Link to="/components">
-            <ListItem button>
-              <ListItemIcon>
-                <ListIcon />
-              </ListItemIcon>
-              <ListItemText>Components</ListItemText>
-            </ListItem>
-          </Link>
-        </List>
-      </Drawer>
     </div>
-  )
-}
+  );
+};
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-}
+};
 
 Header.defaultProps = {
   siteTitle: ``,
-}
+};
 
-export default Header
+export default Header;

@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Material UI Starter`,
-    description: `Kick off your next, great Gatsby project with this Material UI starter. This barebones starter ships with the main Gatsby and Material UI configuration files you might need.`,
-    author: `@dominicabela`,
+    title: `Nook Assist`,
+    // description: `Kick off your next, great Gatsby project with this Material UI starter. This barebones starter ships with the main Gatsby and Material UI configuration files you might need.`,
+    author: `@dly5891`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -43,4 +43,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
   ],
-}
+};
