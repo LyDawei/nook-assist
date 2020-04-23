@@ -2,7 +2,6 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
@@ -54,20 +53,20 @@ export default function BottomDrawer(props) {
     </div>
   );
 
+  const anchor = 'bottom';
+
   return (
     <div>
-      {['bottom'].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <SwipeableDrawer
-            anchor={anchor}
-            open={props.drawerStatus}
-            onClose={() => props.onToggleDrawer(false)}
-            onOpen={() => props.onToggleDrawer(true)}
-          >
-            {list(anchor)}
-          </SwipeableDrawer>
-        </React.Fragment>
-      ))}
+      <React.Fragment key={anchor}>
+        <SwipeableDrawer
+          anchor={anchor}
+          open={props.drawerStatus}
+          onClose={() => props.onToggleDrawer(false)}
+          onOpen={() => props.onToggleDrawer(true)}
+        >
+          {list(anchor)}
+        </SwipeableDrawer>
+      </React.Fragment>
     </div>
   );
 }
