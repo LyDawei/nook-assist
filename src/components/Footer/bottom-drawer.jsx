@@ -3,12 +3,11 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import routes from '../../constants/routes';
+import { Link } from 'gatsby';
 
 const useStyles = makeStyles({
   list: {
@@ -30,7 +29,15 @@ export default function BottomDrawer(props) {
       role="presentation"
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {routes.map((route) => (
+          <Link to={route.path}>
+            <ListItem button key={route.label}>
+              <ListItemIcon>{route.icon}</ListItemIcon>
+              <ListItemText primary={route.label} />
+            </ListItem>
+          </Link>
+        ))}
+        {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -48,7 +55,7 @@ export default function BottomDrawer(props) {
             </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
-        ))}
+        ))} */}
       </List>
     </div>
   );

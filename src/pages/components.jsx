@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 const SecondPage = () => (
   <Layout>
@@ -9,6 +9,6 @@ const SecondPage = () => (
     <h1>Components</h1>
     <p>Welcome to the components page.</p>
   </Layout>
-)
+);
 
-export default SecondPage
+export default SecondPage;

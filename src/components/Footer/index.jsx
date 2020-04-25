@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Footer = () => {
+const Footer = (props) => {
   const classes = useStyles();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -49,22 +49,27 @@ const Footer = () => {
           >
             <MenuIcon />
           </IconButton>
-          <IconButton color="default">
-            <BookmarksIcon />
-          </IconButton>
+
+          {!props.basic && (
+            <IconButton color="default">
+              <BookmarksIcon />
+            </IconButton>
+          )}
         </div>
-        <TextField
-          className={classes.margin}
-          id="input-with-icon-textfield"
-          color="primary"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
+        {!props.basic && (
+          <TextField
+            className={classes.margin}
+            id="input-with-icon-textfield"
+            color="primary"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
+        )}
       </Toolbar>
       <BottomDrawer
         drawerStatus={drawerOpen}

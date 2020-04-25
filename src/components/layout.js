@@ -15,7 +15,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../theme';
 import Footer from './Footer/index.jsx';
 
-const Layout = ({ children }) => {
+const Layout = ({ basicFooter, children }) => {
   return (
     <StaticQuery
       query={graphql`
@@ -41,7 +41,7 @@ const Layout = ({ children }) => {
             >
               <main>{children}</main>
             </div>
-            <Footer></Footer>
+            <Footer basic={basicFooter}></Footer>
           </div>
         </ThemeProvider>
       )}
@@ -50,6 +50,7 @@ const Layout = ({ children }) => {
 };
 
 Layout.propTypes = {
+  footer: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
 
